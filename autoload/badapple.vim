@@ -8,7 +8,7 @@ set cpo&vim
 
 " read file to create frames
 function! s:read_file() abort
-    let file = expand('<sfile>:h:h') . '/resources/badapple.txt'
+    let file = globpath(&rtp, 'resources/badapple.txt')
     let frames = []
     let frame = []
 
