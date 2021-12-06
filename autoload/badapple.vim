@@ -8,7 +8,7 @@ set cpo&vim
 
 " read file to create frames
 function! s:read_file() abort
-    let file = globpath(&rtp, 'resources/badapple.txt')
+    let file = globpath(&rtp, 'resources/badapple.txt', v:false, v:true)[0]
     let frames = []
     let frame = []
 
@@ -36,8 +36,8 @@ function! badapple#play() abort
 
         for frame in frames
             call popup_settext(winid, frame)
-            redraw!
-            sleep 50ms
+            redraw
+            sleep 30ms
             let key = getchar(0)
             if key ==# 113
                 break
@@ -48,8 +48,8 @@ function! badapple#play() abort
         new | setlocal buftype=nofile bufhidden=wipe
         for frame in frames
             call setline(1, frame)
-            redraw!
-            sleep 50ms
+            redraw
+            sleep 70ms
             let key = getchar(0)
             if key ==# 113
                 break
